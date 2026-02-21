@@ -1,0 +1,32 @@
+﻿Analyzing Bac_manager...                                        
+
+   info - 'value' is deprecated and shouldn't be used. Use component accessors like .r or .g, or toARGB32 for an explicit conversion - lib\providers\subject_provider.dart:26:35 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use component accessors like .r or .g, or toARGB32 for an explicit conversion - lib\providers\subject_provider.dart:32:39 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use component accessors like .r or .g, or toARGB32 for an explicit conversion - lib\providers\subject_provider.dart:38:33 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use component accessors like .r or .g, or toARGB32 for an explicit conversion - lib\providers\subject_provider.dart:44:33 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use component accessors like .r or .g, or toARGB32 for an explicit conversion - lib\providers\subject_provider.dart:50:33 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use component accessors like .r or .g, or toARGB32 for an explicit conversion - lib\providers\subject_provider.dart:56:34 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use component accessors like .r or .g, or toARGB32 for an explicit conversion - lib\providers\subject_provider.dart:62:34 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use component accessors like .r or .g, or toARGB32 for an explicit conversion - lib\providers\subject_provider.dart:68:35 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use component accessors like .r or .g, or toARGB32 for an explicit conversion - lib\providers\subject_provider.dart:74:39 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use component accessors like .r or .g, or toARGB32 for an explicit conversion - lib\providers\subject_provider.dart:88:25 - deprecated_member_use
+   info - 'onWillAccept' is deprecated and shouldn't be used. Use onWillAcceptWithDetails instead. This callback is similar to onWillAcceptWithDetails but does not provide drag details. This feature was deprecated after v3.14.0-0.2.pre - lib\screens\add_edit_student_screen.dart:142:11 - deprecated_member_use
+   info - 'onAccept' is deprecated and shouldn't be used. Use onAcceptWithDetails instead. This callback is similar to onAcceptWithDetails but does not provide drag details. This feature was deprecated after v3.14.0-0.2.pre - lib\screens\add_edit_student_screen.dart:143:11 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\add_edit_student_screen.dart:156:35 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\add_edit_student_screen.dart:157:35 - deprecated_member_use
+   info - 'onWillAccept' is deprecated and shouldn't be used. Use onWillAcceptWithDetails instead. This callback is similar to onWillAcceptWithDetails but does not provide drag details. This feature was deprecated after v3.14.0-0.2.pre - lib\screens\add_edit_student_screen.dart:193:11 - deprecated_member_use
+   info - 'onAccept' is deprecated and shouldn't be used. Use onAcceptWithDetails instead. This callback is similar to onAcceptWithDetails but does not provide drag details. This feature was deprecated after v3.14.0-0.2.pre - lib\screens\add_edit_student_screen.dart:194:11 - deprecated_member_use
+  error - The named parameter 'minHeight' isn't defined - lib\screens\add_edit_student_screen.dart:209:15 - undefined_named_parameter
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\add_edit_student_screen.dart:214:35 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\add_edit_student_screen.dart:215:35 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\add_edit_student_screen.dart:220:37 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\add_edit_student_screen.dart:399:37 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\add_edit_student_screen.dart:421:30 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\add_edit_student_screen.dart:422:37 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\add_edit_student_screen.dart:464:37 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\home_screen.dart:163:66 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use component accessors like .r or .g, or toARGB32 for an explicit conversion - lib\screens\home_screen.dart:187:61 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\home_screen.dart:195:42 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\screens\home_screen.dart:237:33 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use component accessors like .r or .g, or toARGB32 for an explicit conversion - lib\screens\subject_manager_screen.dart:135:51 - deprecated_member_use
+
