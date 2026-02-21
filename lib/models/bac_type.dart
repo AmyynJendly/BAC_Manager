@@ -1,21 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 
-part 'bac_type.g.dart';
-
-@HiveType(typeId: 0)
-enum BacType {
-  @HiveField(0)
-  math,
-  @HiveField(1)
-  science,
-  @HiveField(2)
-  informatique,
-  @HiveField(3)
-  lettres,
-  @HiveField(4)
-  technique,
-}
+enum BacType { math, science, informatique, lettres, technique }
 
 extension BacTypeExtension on BacType {
   String get label {

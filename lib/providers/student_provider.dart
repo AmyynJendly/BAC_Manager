@@ -1,25 +1,41 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:uuid/uuid.dart';
-import 'package:bac_manager/models/student.dart';
-import 'package:bac_manager/models/assigned_subject.dart';
-import 'package:bac_manager/models/bac_type.dart';
-import 'package:bac_manager/models/subject.dart';
+import '../main.dart';
+import '../models/student.dart';
+import '../models/assigned_subject.dart';
+import '../models/bac_type.dart';
+import '../models/subject.dart';
 
-final studentProvider = NotifierProvider<StudentNotifier, List<Student>>(() {
-  return StudentNotifier();
-});
-
-class StudentNotifier extends Notifier<List<Student>> {
-  static const String boxName = 'students';
-  late Box<Student> _box;
-  final _uuid = const Uuid();
-
-  @override
-  List<Student> build() {
-    _box = Hive.box<Student>(boxName);
-    return _box.values.toList();
+class StudentNotifier extends StateNotifier<List<Student>> {
+  StudentNotifier() : super([]) {
+    _load();
+    _subscribeRealtime();
   }
+
+  Future<void> _load() async {
+    try {
+      final studentsData = await supabase.from('students').select();
+      final assignedData = await supabase.from('assigned_subjects').select();
+
+      state = (studentsData as List).map((s) {
+        final studentAssigned = (assignedData as List)
+            .where((a) => a['student_id'] == s['id'])
+            .map((e) => AssignedSubject.fromMap(e))
+            .toList();
+        return Student.fromMap(s, studentAssigned);
+      }).toList();
+    } catch (_) {}
+  }
+
+  void _subscribeRealtime() {
+    supabase.from('students').stream(primaryKey: ['id']).listen((_) => _load());
+    supabase
+        .from('assigned_subjects')
+        .stream(primaryKey: ['id'])
+        .listen((_) => _load());
+  }
+
+  final _uuid = const Uuid();
 
   Future<void> addStudent({
     required String name,
@@ -32,21 +48,30 @@ class StudentNotifier extends Notifier<List<Student>> {
       bacType: bacType,
       assignedSubjects: subjects,
     );
-    await _box.put(s.id, s);
-    state = _box.values.toList();
+    await supabase.from('students').insert(s.toMap());
+    for (final a in s.assignedSubjects) {
+      await supabase.from('assigned_subjects').insert(a.toMap(s.id));
+    }
   }
 
   Future<void> updateStudent(Student student) async {
-    await _box.put(student.id, student);
-    state = _box.values.toList();
+    await supabase
+        .from('students')
+        .update(student.toMap())
+        .eq('id', student.id);
+    await supabase
+        .from('assigned_subjects')
+        .delete()
+        .eq('student_id', student.id);
+    for (final a in student.assignedSubjects) {
+      await supabase.from('assigned_subjects').insert(a.toMap(student.id));
+    }
   }
 
   Future<void> deleteStudent(String id) async {
-    await _box.delete(id);
-    state = _box.values.toList();
+    await supabase.from('students').delete().eq('id', id);
   }
 
-  // Price Calculation Logic
   double getStudentTotalPrice(Student student, List<Subject> globalSubjects) {
     double total = 0;
     for (var assigned in student.assignedSubjects) {
@@ -74,3 +99,7 @@ class StudentNotifier extends Notifier<List<Student>> {
   Subject _emptySubject() =>
       Subject(id: '', name: '', iconName: 'help_outline', pricePerBacType: {});
 }
+
+final studentProvider = StateNotifierProvider<StudentNotifier, List<Student>>(
+  (_) => StudentNotifier(),
+);

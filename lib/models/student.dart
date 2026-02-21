@@ -1,29 +1,34 @@
-import 'package:hive/hive.dart';
 import 'bac_type.dart';
 import 'assigned_subject.dart';
 
-part 'student.g.dart';
-
-@HiveType(typeId: 3)
-class Student extends HiveObject {
-  @HiveField(0)
-  String id;
-
-  @HiveField(1)
-  String name;
-
-  @HiveField(2)
-  BacType bacType;
-
-  @HiveField(3)
-  List<AssignedSubject> assignedSubjects;
+class Student {
+  final String id;
+  final String name;
+  final BacType bacType;
+  final List<AssignedSubject> assignedSubjects;
 
   Student({
     required this.id,
     required this.name,
     required this.bacType,
-    required this.assignedSubjects,
+    this.assignedSubjects = const [],
   });
+
+  factory Student.fromMap(
+    Map<String, dynamic> map,
+    List<AssignedSubject> assigned,
+  ) => Student(
+    id: map['id'],
+    name: map['name'],
+    bacType: BacType.values.byName(map['bac_type']),
+    assignedSubjects: assigned,
+  );
+
+  Map<String, dynamic> toMap() => {
+    'id': id,
+    'name': name,
+    'bac_type': bacType.name,
+  };
 
   Student copyWith({
     String? name,

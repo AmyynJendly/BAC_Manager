@@ -9,6 +9,7 @@ import '../providers/subject_provider.dart';
 import '../utils/formatter.dart';
 import '../utils/constants.dart';
 import '../utils/icon_map.dart';
+import 'package:uuid/uuid.dart';
 
 class StudentEditScreen extends ConsumerStatefulWidget {
   final Student? student;
@@ -225,7 +226,7 @@ class _StudentEditScreenState extends ConsumerState<StudentEditScreen> {
         )) {
           _assignedSubjectsNotifier.value = [
             ..._assignedSubjectsNotifier.value,
-            AssignedSubject(subjectId: subject.id),
+            AssignedSubject(id: const Uuid().v4(), subjectId: subject.id),
           ];
         }
         _isHoveringNotifier.value = false;

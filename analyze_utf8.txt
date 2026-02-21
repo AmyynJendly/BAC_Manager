@@ -1,0 +1,37 @@
+﻿Analyzing Bac_manager...                                        
+
+   info - The imported package 'hive' isn't a dependency of the importing package - lib\models\bac_type.dart:2:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:hive/hive.dart' - lib\models\bac_type.dart:2:8 - uri_does_not_exist
+  error - Target of URI hasn't been generated: 'package:bac_manager/models/bac_type.g.dart' - lib\models\bac_type.dart:4:6 - uri_has_not_been_generated
+  error - Undefined name 'HiveType' used as an annotation - lib\models\bac_type.dart:6:1 - undefined_annotation
+  error - Undefined name 'HiveField' used as an annotation - lib\models\bac_type.dart:8:3 - undefined_annotation
+  error - Undefined name 'HiveField' used as an annotation - lib\models\bac_type.dart:10:3 - undefined_annotation
+  error - Undefined name 'HiveField' used as an annotation - lib\models\bac_type.dart:12:3 - undefined_annotation
+  error - Undefined name 'HiveField' used as an annotation - lib\models\bac_type.dart:14:3 - undefined_annotation
+  error - Undefined name 'HiveField' used as an annotation - lib\models\bac_type.dart:16:3 - undefined_annotation
+  error - The named parameter 'id' is required, but there's no corresponding argument - lib\screens\student_edit_screen.dart:228:13 - missing_required_argument
+   info - The imported package 'hive_flutter' isn't a dependency of the importing package - test\widget_test.dart:5:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:hive_flutter/hive_flutter.dart' - test\widget_test.dart:5:8 - uri_does_not_exist
+  error - Undefined name 'Hive' - test\widget_test.dart:17:5 - undefined_identifier
+  error - Undefined name 'Hive' - test\widget_test.dart:20:10 - undefined_identifier
+  error - The function 'BacTypeAdapter' isn't defined - test\widget_test.dart:20:35 - undefined_function
+  error - Undefined name 'Hive' - test\widget_test.dart:21:7 - undefined_identifier
+  error - The function 'BacTypeAdapter' isn't defined - test\widget_test.dart:21:28 - undefined_function
+  error - Undefined name 'Hive' - test\widget_test.dart:23:10 - undefined_identifier
+  error - The function 'SubjectAdapter' isn't defined - test\widget_test.dart:23:35 - undefined_function
+  error - Undefined name 'Hive' - test\widget_test.dart:24:7 - undefined_identifier
+  error - The function 'SubjectAdapter' isn't defined - test\widget_test.dart:24:28 - undefined_function
+  error - Undefined name 'Hive' - test\widget_test.dart:26:10 - undefined_identifier
+  error - The function 'AssignedSubjectAdapter' isn't defined - test\widget_test.dart:26:35 - undefined_function
+  error - Undefined name 'Hive' - test\widget_test.dart:27:7 - undefined_identifier
+  error - The function 'AssignedSubjectAdapter' isn't defined - test\widget_test.dart:27:28 - undefined_function
+  error - Undefined name 'Hive' - test\widget_test.dart:29:10 - undefined_identifier
+  error - The function 'StudentAdapter' isn't defined - test\widget_test.dart:29:35 - undefined_function
+  error - Undefined name 'Hive' - test\widget_test.dart:30:7 - undefined_identifier
+  error - The function 'StudentAdapter' isn't defined - test\widget_test.dart:30:28 - undefined_function
+  error - Undefined name 'Hive' - test\widget_test.dart:33:11 - undefined_identifier
+  error - The getter 'boxName' isn't defined for the type 'SubjectNotifier' - test\widget_test.dart:33:49 - undefined_getter
+  error - Undefined name 'Hive' - test\widget_test.dart:34:11 - undefined_identifier
+  error - The getter 'boxName' isn't defined for the type 'StudentNotifier' - test\widget_test.dart:34:49 - undefined_getter
+  error - Undefined name 'Hive' - test\widget_test.dart:38:11 - undefined_identifier
+
