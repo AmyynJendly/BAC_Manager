@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/subject.dart';
 import '../models/bac_type.dart';
 import '../providers/subject_provider.dart';
-import '../utils/formatter.dart';
 import '../utils/constants.dart';
+import '../utils/icon_map.dart';
 
 class SubjectManagerScreen extends ConsumerStatefulWidget {
   const SubjectManagerScreen({super.key});
@@ -54,11 +54,14 @@ class _SubjectManagerScreenState extends ConsumerState<SubjectManagerScreen> {
   void _showAddEditSubjectDialog(BuildContext context, [Subject? subject]) {
     final nameController = TextEditingController(text: subject?.name);
     IconData selectedIcon = subject != null
-        ? IconData(subject.iconCodePoint, fontFamily: subject.iconFontFamily)
+        ? iconFromString(subject.iconName)
         : Icons.book;
-    final prices = Map<BacType, double>.from(
-      subject?.pricePerBacType ?? {for (var t in BacType.values) t: 40.0},
-    );
+    final prices = subject != null
+        ? subject.pricePerBacType.map(
+            (k, v) =>
+                MapEntry(BacType.values.firstWhere((e) => e.name == k), v),
+          )
+        : {for (var t in BacType.values) t: 40.0};
 
     showModalBottomSheet(
       context: context,
@@ -186,9 +189,10 @@ class _SubjectManagerScreenState extends ConsumerState<SubjectManagerScreen> {
                             .updateSubject(
                               subject.copyWith(
                                 name: name,
-                                iconCodePoint: selectedIcon.codePoint,
-                                iconFontFamily: selectedIcon.fontFamily,
-                                pricePerBacType: prices,
+                                iconName: iconToString(selectedIcon),
+                                pricePerBacType: prices.map(
+                                  (k, v) => MapEntry(k.name, v),
+                                ),
                               ),
                             );
                       }
@@ -297,10 +301,7 @@ class _SubjectExpansionTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final icon = IconData(
-      subject.iconCodePoint,
-      fontFamily: subject.iconFontFamily,
-    );
+    final icon = iconFromString(subject.iconName);
 
     return Card(
       margin: const EdgeInsets.only(bottom: AppConstants.kSpaceM),
@@ -391,7 +392,7 @@ class _PriceConfigurationTable extends ConsumerWidget {
           ),
           const Divider(),
           ...BacType.values.map((type) {
-            final price = subject.pricePerBacType[type] ?? 0.0;
+            final price = subject.pricePerBacType[type.name] ?? 0.0;
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 4),
               child: Row(
@@ -425,10 +426,10 @@ class _PriceConfigurationTable extends ConsumerWidget {
                       ),
                       onFieldSubmitted: (value) {
                         final newPrice = double.tryParse(value) ?? price;
-                        final updatedPrices = Map<BacType, double>.from(
+                        final updatedPrices = Map<String, double>.from(
                           subject.pricePerBacType,
                         );
-                        updatedPrices[type] = newPrice;
+                        updatedPrices[type.name] = newPrice;
                         ref
                             .read(subjectProvider.notifier)
                             .updateSubject(

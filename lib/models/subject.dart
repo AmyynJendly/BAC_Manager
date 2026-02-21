@@ -1,44 +1,37 @@
 import 'package:hive/hive.dart';
-import 'bac_type.dart';
 
 part 'subject.g.dart';
 
 @HiveType(typeId: 1)
-class Subject {
+class Subject extends HiveObject {
   @HiveField(0)
-  final String id;
+  String id;
 
   @HiveField(1)
-  final String name;
+  String name;
 
   @HiveField(2)
-  final int iconCodePoint;
+  String iconName;
 
   @HiveField(3)
-  final String? iconFontFamily;
-
-  @HiveField(4)
-  final Map<BacType, double> pricePerBacType;
+  Map<String, double> pricePerBacType;
 
   Subject({
     required this.id,
     required this.name,
-    required this.iconCodePoint,
-    this.iconFontFamily,
+    required this.iconName,
     required this.pricePerBacType,
   });
 
   Subject copyWith({
     String? name,
-    int? iconCodePoint,
-    String? iconFontFamily,
-    Map<BacType, double>? pricePerBacType,
+    String? iconName,
+    Map<String, double>? pricePerBacType,
   }) {
     return Subject(
       id: id,
       name: name ?? this.name,
-      iconCodePoint: iconCodePoint ?? this.iconCodePoint,
-      iconFontFamily: iconFontFamily ?? this.iconFontFamily,
+      iconName: iconName ?? this.iconName,
       pricePerBacType: pricePerBacType ?? this.pricePerBacType,
     );
   }

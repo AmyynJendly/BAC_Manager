@@ -6,6 +6,7 @@ import '../providers/student_provider.dart';
 import '../providers/subject_provider.dart';
 import '../utils/formatter.dart';
 import '../utils/constants.dart';
+import '../utils/icon_map.dart';
 import '../screens/student_edit_screen.dart';
 
 class StudentCard extends ConsumerWidget {
@@ -87,10 +88,7 @@ class StudentCard extends ConsumerWidget {
                     if (global == null) return const SizedBox.shrink();
                     return _MiniSubjectChip(
                       name: global.name,
-                      icon: IconData(
-                        global.iconCodePoint,
-                        fontFamily: global.iconFontFamily,
-                      ),
+                      icon: iconFromString(global.iconName),
                     );
                   }).toList(),
                 ),

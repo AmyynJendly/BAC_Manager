@@ -3,12 +3,12 @@ import 'package:hive/hive.dart';
 part 'assigned_subject.g.dart';
 
 @HiveType(typeId: 2)
-class AssignedSubject {
+class AssignedSubject extends HiveObject {
   @HiveField(0)
-  final String subjectId;
+  String subjectId;
 
   @HiveField(1)
-  final double? customPrice;
+  double? customPrice;
 
   AssignedSubject({required this.subjectId, this.customPrice});
 

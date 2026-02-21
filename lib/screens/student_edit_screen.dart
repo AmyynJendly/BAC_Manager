@@ -8,6 +8,7 @@ import '../providers/student_provider.dart';
 import '../providers/subject_provider.dart';
 import '../utils/formatter.dart';
 import '../utils/constants.dart';
+import '../utils/icon_map.dart';
 
 class StudentEditScreen extends ConsumerStatefulWidget {
   final Student? student;
@@ -423,10 +424,7 @@ class _DraggableSubjectChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final icon = IconData(
-      subject.iconCodePoint,
-      fontFamily: subject.iconFontFamily,
-    );
+    final icon = iconFromString(subject.iconName);
     return Draggable<Subject>(
       data: subject,
       feedback: Material(
@@ -499,13 +497,10 @@ class _AssignedSubjectListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final defaultPrice = global.pricePerBacType[studentBacType] ?? 0.0;
+    final defaultPrice = global.pricePerBacType[studentBacType.name] ?? 0.0;
     final displayPrice = assigned.customPrice ?? defaultPrice;
     final isOverridden = assigned.customPrice != null;
-    final icon = IconData(
-      global.iconCodePoint,
-      fontFamily: global.iconFontFamily,
-    );
+    final icon = iconFromString(global.iconName);
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
@@ -576,7 +571,7 @@ class _AssignedSubjectListItem extends StatelessWidget {
   }
 
   void _showPriceEditSheet(BuildContext context) {
-    final defaultPrice = global.pricePerBacType[studentBacType] ?? 0.0;
+    final defaultPrice = global.pricePerBacType[studentBacType.name] ?? 0.0;
     final controller = TextEditingController(
       text: (assigned.customPrice ?? defaultPrice).toString(),
     );

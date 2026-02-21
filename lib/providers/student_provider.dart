@@ -57,7 +57,7 @@ class StudentNotifier extends Notifier<List<Student>> {
           (s) => s.id == assigned.subjectId,
           orElse: () => _emptySubject(),
         );
-        total += global.pricePerBacType[student.bacType] ?? 0;
+        total += global.pricePerBacType[student.bacType.name] ?? 0;
       }
     }
     return total;
@@ -72,5 +72,5 @@ class StudentNotifier extends Notifier<List<Student>> {
   }
 
   Subject _emptySubject() =>
-      Subject(id: '', name: '', iconCodePoint: 0, pricePerBacType: {});
+      Subject(id: '', name: '', iconName: 'help_outline', pricePerBacType: {});
 }

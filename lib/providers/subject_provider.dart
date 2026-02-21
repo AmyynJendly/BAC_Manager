@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:uuid/uuid.dart';
 import '../models/subject.dart';
 import '../models/bac_type.dart';
+import '../utils/icon_map.dart';
 
 final subjectProvider = NotifierProvider<SubjectNotifier, List<Subject>>(() {
   return SubjectNotifier();
@@ -28,9 +29,8 @@ class SubjectNotifier extends Notifier<List<Subject>> {
     final s = Subject(
       id: _uuid.v4(),
       name: name,
-      iconCodePoint: icon.codePoint,
-      iconFontFamily: icon.fontFamily,
-      pricePerBacType: prices,
+      iconName: iconToString(icon),
+      pricePerBacType: prices.map((k, v) => MapEntry(k.name, v)),
     );
     await _box.put(s.id, s);
     state = _box.values.toList();
@@ -75,14 +75,13 @@ class SubjectNotifier extends Notifier<List<Subject>> {
     return Subject(
       id: uuid.v4(),
       name: name,
-      iconCodePoint: icon.codePoint,
-      iconFontFamily: icon.fontFamily,
+      iconName: iconToString(icon),
       pricePerBacType: {
-        BacType.math: 50.0,
-        BacType.science: 45.0,
-        BacType.informatique: 40.0,
-        BacType.lettres: 30.0,
-        BacType.technique: 35.0,
+        'math': 50.0,
+        'science': 45.0,
+        'informatique': 40.0,
+        'lettres': 30.0,
+        'technique': 35.0,
       },
     );
   }

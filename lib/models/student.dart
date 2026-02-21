@@ -5,18 +5,18 @@ import 'assigned_subject.dart';
 part 'student.g.dart';
 
 @HiveType(typeId: 3)
-class Student {
+class Student extends HiveObject {
   @HiveField(0)
-  final String id;
+  String id;
 
   @HiveField(1)
-  final String name;
+  String name;
 
   @HiveField(2)
-  final BacType bacType;
+  BacType bacType;
 
   @HiveField(3)
-  final List<AssignedSubject> assignedSubjects;
+  List<AssignedSubject> assignedSubjects;
 
   Student({
     required this.id,

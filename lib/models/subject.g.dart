@@ -19,25 +19,22 @@ class SubjectAdapter extends TypeAdapter<Subject> {
     return Subject(
       id: fields[0] as String,
       name: fields[1] as String,
-      iconCodePoint: fields[2] as int,
-      iconFontFamily: fields[3] as String?,
-      pricePerBacType: (fields[4] as Map).cast<BacType, double>(),
+      iconName: fields[2] as String,
+      pricePerBacType: (fields[3] as Map).cast<String, double>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, Subject obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.iconCodePoint)
+      ..write(obj.iconName)
       ..writeByte(3)
-      ..write(obj.iconFontFamily)
-      ..writeByte(4)
       ..write(obj.pricePerBacType);
   }
 
